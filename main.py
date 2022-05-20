@@ -1,9 +1,10 @@
 import sqlite3
 import os
 import pandas as pd
-from sqlalchemy import desc
 
-os.remove("test.db")
+# if test.db exists, delete it
+if os.path.exists("test.db"):
+    os.remove("test.db")
 
 connection = sqlite3.connect("test.db")
 cursor = connection.cursor()
@@ -25,11 +26,6 @@ headings = pd.read_csv("headings.csv")
 subheadings = pd.read_csv("subheadings.csv")
 country_wise = pd.read_csv("country_wise.csv")
 
-
-# chapters_file = open("chapters.csv", "r")
-# headings_file = open("headings.csv", "r")
-# subheadings_file = open("subheadings.csv", "r")
-# country_wise_file = open("country_wise.csv", "r")
 
 
 for rows in chapters.itertuples():
