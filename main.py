@@ -19,6 +19,13 @@ cursor.execute(
     "CREATE TABLE subheadings (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, description TEXT NOT NULL, code TEXT NOT NULL, heading TEXT NOT NULL, FOREIGN KEY (heading) REFERENCES headings (id))")
 cursor.execute(
     "CREATE TABLE country_wise (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, description TEXT NOT NULL, code TEXT NOT NULL, country TEXT NOT NULL, subheading TEXT NOT NULL, FOREIGN KEY (subheading) REFERENCES subheadings (id))")
+cursor.execute(
+    "CREATE TABLE custom_duty (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, hscode TEXT NOT NULL, country TEXT NOT NULL)")
+cursor.execute(
+    "CREATE TABLE sales_tax (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, hscode TEXT NOT NULL, country TEXT NOT NULL)")
+cursor.execute(
+    "CREATE TABLE vat (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, hscode TEXT NOT NULL, country TEXT NOT NULL)")
+
 
 
 chapters = pd.read_csv("chapters.csv")
