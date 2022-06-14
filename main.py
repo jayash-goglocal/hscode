@@ -2,9 +2,28 @@ import psycopg2
 
 import pandas as pd
 
-conn = psycopg2.connect("dbname=logistics user=postgres password=postgres")
+import os
+
+# os.environ["DATABASE_URL"] = "localhost"
+# os.environ["POSTGRES_USER"] = "postgres"
+# os.environ["POSTGRES_PASSWORD"] = "postgres"
+# os.environ["POSTGRES_DB_NAME"] = "hscodes"
+
+os.environ["DATABASE_URL"] = "seller-central.cuybhpblpref.ap-south-1.rds.amazonaws.com"
+os.environ["POSTGRES_USER"] = "postgres"
+os.environ["POSTGRES_PASSWORD"] = "goGlocal123"
+os.environ["POSTGRES_DB_NAME"] = "hscodes"
+
+
+conn = psycopg2.connect(
+    dbname = os.getenv("POSTGRES_DB_NAME"),
+    host = os.getenv("DATABASE_URL"),
+    user = os.getenv("POSTGRES_USER"),
+    password = os.getenv("POSTGRES_PASSWORD")
+)
 conn.autocommit = True
 cursor = conn.cursor()
+
 
 
 
